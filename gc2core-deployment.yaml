@@ -1,0 +1,62 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: gc2core
+  name: gc2core
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: gc2core
+    spec:
+      containers:
+      - image: mapcentia/gc2core
+        name: gc2core
+        resources: {}
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /var/www/geocloud2/app/wms
+          name: gc2core-var-www-geocloud2-app-wms
+        - mountPath: /var/www/geocloud2/app/tmp
+          name: gc2core-var-www-geocloud2-app-tmp
+        - mountPath: /var/www/geocloud2/public/logs
+          name: gc2core-var-www-geocloud2-public-logs
+        - mountPath: /var/log
+          name: gc2core-var-log
+        - mountPath: /var/lib/php/sessions
+          name: gc2core-var-lib-php-sessions
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+      volumes:
+      - name: gc2core-var-www-geocloud2-app-wms
+        azureFile:
+          secretName: storage-secret
+          shareName: gc2core-var-www-geocloud2-app-wms
+      - name: gc2core-var-www-geocloud2-app-tmp
+        azureFile:
+          secretName: storage-secret
+          shareName: gc2core-var-www-geocloud2-app-tmp
+      - name: gc2core-var-www-geocloud2-public-logs
+        azureFile:
+          secretName: storage-secret
+          shareName: gc2core-var-www-geocloud2-public-logs
+      - name: gc2core-var-log
+        azureFile:
+          secretName: storage-secret
+          shareName: gc2core-var-log
+      - name: gc2core-var-lib-php-sessions
+        azureFile:
+          secretName: storage-secret
+          shareName: gc2core-var-lib-php-sessions
+status: {}
