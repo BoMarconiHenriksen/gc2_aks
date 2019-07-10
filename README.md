@@ -1,3 +1,9 @@
+## What is GC2?
+
+GC2 – an enterprise platform for managing geospatial data, making map visualisations and creating applications. Built on the best open source and standard based software.
+
+Please visit the https://github.com/mapcentia/geocloud2 and http://www.mapcentia.com/ for more information.
+
 ## The GC2 deployment on AKS
 
 ### Prerequisities
