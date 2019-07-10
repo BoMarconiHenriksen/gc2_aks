@@ -15,10 +15,15 @@ Steps to to deploy the GC2 on AKS cluster:
 1. Ensure that `kubectl` command is authorized on AKS cluter;
 2. Enter Azure storage account name and storage account key in `storage-credentials.yaml` (please see the https://zimmergren.net/mount-an-azure-storage-file-share-to-deployments-in-azure-kubernetes-services-aks/ for instructions);
 3. Install the ingress controller and SSL certificates manager (please follow the https://docs.microsoft.com/en-us/azure/aks/ingress-tls). All files, required during installation, are already present in the provded configurations, but hey need to be filled with installation-specific data:
+
 3.1. `email` field in `cluster-issuer.yaml`
+
 3.2 `IP` (the external IP address of the ingress controller) and `DNSNAME` (the installation domain name) in `set-ssl.sh`
+
 3.3 `hosts` and `host` fields filled with installation host name in `ingress-rules.yaml`
+
 3.4 `image` field with the custom `pgbouncer` image name in `pgbouncer-pod.yaml`
+
 4. Run `kubectl apply -f .` command to instaniate GC2 pods and services.
 
 ---
