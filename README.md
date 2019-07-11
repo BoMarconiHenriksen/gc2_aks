@@ -10,11 +10,7 @@ Please visit the https://github.com/mapcentia/geocloud2 and http://www.mapcentia
 
 Before installing GC2 in the AKS cluster, ensure that following file shares are created as a part of the Storage account (_Home > Storage accounts > USERNAME - Files_), as these file shares are used by pods for exchanging various data (please see the https://zimmergren.net/mount-an-azure-storage-file-share-to-deployments-in-azure-kubernetes-services-aks/ for instructions):
 
-- `gc2core-var-lib-php-sessions`, `gc2core-var-log`,  `gc2core-var-www-geocloud2-app-tmp`, `gc2core-var-www-geocloud2-app-wms`, `gc2core-var-www-geocloud2-public-logs`
-
-- `mapcache-etc-apache2-sites-enabled`
-
-- `vidi-root-vidi-public-tmp`, `vidi-tmp-sessions`
+- `gc2core-var-www-geocloud2-app-wms`
 
 Extract the provided files in any folder on the server with installed `kubectl` and proceed to the installation section.
 

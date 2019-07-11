@@ -25,16 +25,10 @@ spec:
         volumeMounts:
         - mountPath: /var/www/geocloud2/app/wms
           name: gc2core-var-www-geocloud2-app-wms
-        - mountPath: /etc/apache2/sites-enabled
-          name: mapcache-etc-apache2-sites-enabled
       restartPolicy: Always
       volumes:
       - name: gc2core-var-www-geocloud2-app-wms
         azureFile:
           secretName: storage-secret
           shareName: gc2core-var-www-geocloud2-app-wms
-      - name: mapcache-etc-apache2-sites-enabled
-        azureFile:
-          secretName: storage-secret
-          shareName: mapcache-etc-apache2-sites-enabled
 status: {}
