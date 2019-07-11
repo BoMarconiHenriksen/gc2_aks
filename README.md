@@ -6,6 +6,8 @@ Please visit the https://github.com/mapcentia/geocloud2 and http://www.mapcentia
 
 ## The GC2 deployment on AKS
 
+The repository contains Docker images to build from in `./docker-images` and Kubernetes configuration files in `./k8s-configurations`. The information below relates to the `k8s-configurations` configuration set.
+
 ### Prerequisities
 
 Before installing GC2 in the AKS cluster, ensure that following file shares are created as a part of the Storage account (_Home > Storage accounts > USERNAME - Files_), as these file shares are used by pods for exchanging various data (please see the https://zimmergren.net/mount-an-azure-storage-file-share-to-deployments-in-azure-kubernetes-services-aks/ for instructions):

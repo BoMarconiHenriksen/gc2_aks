@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  GC2_PASSWORD: "12345"
+  LOCALE: "en_US.UTF-8"
+  TIMEZONE: "Europe/Copenhagen"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgis-gc2-env
+  name: postgis-gc2-env

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Public IP address of your ingress controller
-IP="EXTERNAL_IP_OF_NGINX_INGRESS"
+IP="40.71.29.237"
 
 # Name to associate with public IP address
-DNSNAME="HOSTNAME"
+DNSNAME="gc2"
 
 # Get the resource-id of the public ip
 PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)

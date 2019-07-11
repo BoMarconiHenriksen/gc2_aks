@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - HOSTNAME # (for example, gc2.eastus.cloudapp.azure.com)
+    - gc2.eastus.cloudapp.azure.com
     secretName: tls-secret
   rules:
-  - host: HOSTNAME # (for example, gc2.eastus.cloudapp.azure.com)
+  - host: gc2.eastus.cloudapp.azure.com
     http:
       paths:
       - backend:

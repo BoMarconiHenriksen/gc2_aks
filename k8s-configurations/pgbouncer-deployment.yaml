@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: pgbouncer
   name: pgbouncer
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: Recreate
   template:
@@ -19,10 +19,13 @@ spec:
         io.kompose.service: pgbouncer
     spec:
       containers:
-      - image: mapcentia/pgbouncer
+      - image: alexshumilov/pgbouncer
         name: pgbouncer
+        imagePullPolicy: Always
         ports:
         - containerPort: 5433
         resources: {}
+      imagePullSecrets:
+      - name: regcred
       restartPolicy: Always
 status: {}
