@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gc2-ingress
+  name: vidi-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -10,13 +10,13 @@ metadata:
 spec:
   tls:
   - hosts:
-    - gc2.eastus.cloudapp.azure.com
-    secretName: tls-secret
+    - vidi.eastus.cloudapp.azure.com
+    secretName: tls-secret-vidi
   rules:
-  - host: gc2.eastus.cloudapp.azure.com
+  - host: vidi.eastus.cloudapp.azure.com
     http:
       paths:
       - backend:
-          serviceName: gc2core
-          servicePort: 80
+          serviceName: vidi
+          servicePort: 3000
         path: /

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Public IP address of your ingress controller
-IP="40.71.29.237"
+IP="104.211.4.193"
 
 # Name to associate with public IP address
-DNSNAME="gc2"
+DNSNAME="vidi"
 
 # Get the resource-id of the public ip
 PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
