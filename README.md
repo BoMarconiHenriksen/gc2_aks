@@ -12,7 +12,15 @@ The repository contains Docker images to build from in `./docker-images` and Kub
 
 Before installing GC2 in the AKS cluster, ensure that following file shares are created as a part of the Storage account (_Home > Storage accounts > USERNAME - Files_), as these file shares are used by pods for exchanging various data (please see the https://zimmergren.net/mount-an-azure-storage-file-share-to-deployments-in-azure-kubernetes-services-aks/ for instructions):
 
-- `gc2core-var-www-geocloud2-app-wms`
+- `gc2core-var-www-geocloud2-app-wms-mapcache` (sharing generated files that deal with the WMS generation and caching)
+
+- `gc2core-var-lib-php-sessions` (sharing PHP sessions between containers)
+
+- `gc2core-var-www-geocloud2-app-tmp` (sharing temporary files between containers)
+
+- `vidi-root-vidi-public-tmp` (sharing temporary files between containers)
+
+- `vidi-tmp-sessions` (sharing sessions between containers)
 
 Extract the provided files in any folder on the server with installed `kubectl` and proceed to the installation section.
 

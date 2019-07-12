@@ -24,11 +24,11 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /var/www/geocloud2/app/wms
-          name: gc2core-var-www-geocloud2-app-wms
+          name: gc2core-var-www-geocloud2-app-wms-mapcache
       restartPolicy: Always
       volumes:
-      - name: gc2core-var-www-geocloud2-app-wms
+      - name: gc2core-var-www-geocloud2-app-wms-mapcache
         azureFile:
           secretName: storage-secret
-          shareName: gc2core-var-www-geocloud2-app-wms
+          shareName: gc2core-var-www-geocloud2-app-wms-mapcache
 status: {}

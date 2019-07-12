@@ -25,18 +25,26 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
-        - mountPath: /var/www/geocloud2/app/wms
-          name: gc2core-var-www-geocloud2-app-wms
+        - mountPath: /var/www/geocloud2/app/wms/mapcache
+          name: gc2core-var-www-geocloud2-app-wms-mapcache
+        - mountPath: /var/lib/php/sessions
+          name: gc2core-var-lib-php-sessions
+        - mountPath: /var/www/geocloud2/app/tmp
+          name: gc2core-var-www-geocloud2-app-tmp
         ports:
         - containerPort: 80
       restartPolicy: Always
       volumes:
-      - name: gc2core-var-www-geocloud2-app-wms
+      - name: gc2core-var-www-geocloud2-app-wms-mapcache
         azureFile:
           secretName: storage-secret
-          shareName: gc2core-var-www-geocloud2-app-wms
-      - name: gc2core-var-log
+          shareName: gc2core-var-www-geocloud2-app-wms-mapcache
+      - name: gc2core-var-lib-php-sessions
         azureFile:
           secretName: storage-secret
-          shareName: gc2core-var-log
+          shareName: gc2core-var-lib-php-sessions
+      - name: gc2core-var-www-geocloud2-app-tmp
+        azureFile:
+          secretName: storage-secret
+          shareName: gc2core-var-www-geocloud2-app-tmp
 status: {}

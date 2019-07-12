@@ -22,5 +22,19 @@ spec:
       - image: mapcentia/vidi
         name: vidi
         resources: {}
+        volumeMounts:
+        - mountPath: /root/vidi/public/tmp
+          name: vidi-root-vidi-public-tmp
+        - mountPath: /tmp/sessions
+          name: vidi-tmp-sessions
       restartPolicy: Always
+      volumes:
+      - name: vidi-root-vidi-public-tmp
+        azureFile:
+          secretName: storage-secret
+          shareName: vidi-root-vidi-public-tmp
+      - name: vidi-tmp-sessions
+        azureFile:
+          secretName: storage-secret
+          shareName: vidi-tmp-sessions
 status: {}
