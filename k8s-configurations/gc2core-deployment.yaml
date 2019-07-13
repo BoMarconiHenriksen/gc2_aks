@@ -19,7 +19,7 @@ spec:
         io.kompose.service: gc2core
     spec:
       containers:
-      - image: mapcentia/gc2core
+      - image: mapcentia/gc2core:develop
         name: gc2core
         resources: {}
         securityContext:
