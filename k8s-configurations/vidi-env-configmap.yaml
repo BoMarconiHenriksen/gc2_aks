@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  GC2_HOST: "https://gc2.eastus.cloudapp.azure.com"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vidi-env
+  name: vidi-env

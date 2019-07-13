@@ -19,7 +19,13 @@ spec:
         io.kompose.service: vidi
     spec:
       containers:
-      - image: mapcentia/vidi
+      - env:
+        - name: GC2_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: GC2_HOST
+              name: vidi-env
+        image: mapcentia/vidi
         name: vidi
         resources: {}
         volumeMounts:
