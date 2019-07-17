@@ -26,6 +26,31 @@ Extract the provided files in any folder on the server with installed `kubectl` 
 
 ---
 
+### Preparing the database
+
+To begin with, two databases have to be created in the PostgreSQL cluster:
+
+https://github.com/mapcentia/dockerfiles/blob/master/postgis/entrypoint.sh#L67-L96
+
+To ease installation and migrations in a cluster environment, the "Admin" API was added to GC2 develop branch. So after deployment with connection to a existing PostGIS database, call:
+
+/api/v2/admin/createschema/[your_database]
+
+This will create the "settings" schema in the database. This should only be run once. 
+/api/v2/admin/runmigrations/[your_database]
+
+This will run the latest migrations in the database. This will only affect the settings schema in the database.
+When building your custom GC2 Docker image, please use the "develop" tagged base image: https://cloud.docker.com/repository/registry-1.docker.io/mapcentia/gc2core
+
+Something like this:
+
+```
+FROM mapcentia/gc2core:develop
+ADD App.php /var/www/geocloud2/app/conf/App.php
+ADD Connection.php /var/www/geocloud2/app/conf/Connection.php # Set the db connection
+```
+
+---
 ### Installation
 
 Steps to deploy the GC2 on AKS cluster:
@@ -74,4 +99,3 @@ Steps to deploy the GC2 on AKS cluster:
 `nginx-ingress-controller` - 80/TCP and 443/TCP ports are open (external service)
 
 `nginx-ingress-default-backend` - 80/TCP port is open, handling default routes like `/healthz` that returns 200 and `/` that returns 404 (internal service)
-
