@@ -23,7 +23,7 @@ spec:
         name: mapcache
         resources: {}
         volumeMounts:
-        - mountPath: /var/www/geocloud2/app/wms
+        - mountPath: /var/www/geocloud2/app/wms/mapcache
           name: gc2core-var-www-geocloud2-app-wms-mapcache
       restartPolicy: Always
       volumes:
