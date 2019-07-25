@@ -25,7 +25,7 @@ spec:
             configMapKeyRef:
               key: GC2_HOST
               name: vidi-env
-        image: mapcentia/vidi
+        image: alexshumilov/vidi
         name: vidi
         resources: {}
         volumeMounts:

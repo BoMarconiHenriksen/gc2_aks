@@ -8,6 +8,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ADD conf/gc2/App.php /var/www/geocloud2/app/conf/
 ADD conf/gc2/Connection.php /var/www/geocloud2/app/conf/
 
+# FPM PHP config
+COPY conf/php-fpm/php.ini /etc/php/7.0/fpm/
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

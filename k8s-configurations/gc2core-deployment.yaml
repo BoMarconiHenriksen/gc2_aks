@@ -49,6 +49,11 @@ spec:
             configMapKeyRef:
               key: GC2_PORT
               name: gc2core-env
+        - name: GC2_USER
+          valueFrom:
+            configMapKeyRef:
+              key: GC2_USER
+              name: gc2core-env
         - name: GC2_PASSWORD
           valueFrom:
             configMapKeyRef:
