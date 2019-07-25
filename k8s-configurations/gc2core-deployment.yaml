@@ -19,7 +19,7 @@ spec:
         io.kompose.service: gc2core
     spec:
       containers:
-      - image: mapcentia/gc2core:develop
+      - image: alexshumilov/gc2core
         name: gc2core
         resources: {}
         securityContext:
@@ -33,6 +33,32 @@ spec:
           name: gc2core-var-www-geocloud2-app-tmp
         ports:
         - containerPort: 80
+        env:
+        - name: GC2_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: GC2_HOST
+              name: gc2core-env
+        - name: GC2_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              key: GC2_DATABASE
+              name: gc2core-env
+        - name: GC2_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: GC2_PORT
+              name: gc2core-env
+        - name: GC2_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: GC2_PASSWORD
+              name: gc2core-env
+        - name: GC2_BOUNCER
+          valueFrom:
+            configMapKeyRef:
+              key: GC2_BOUNCER
+              name: gc2core-env
       restartPolicy: Always
       volumes:
       - name: gc2core-var-www-geocloud2-app-wms-mapcache

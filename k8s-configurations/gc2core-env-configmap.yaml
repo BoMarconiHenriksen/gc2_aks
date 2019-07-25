@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  GC2_HOST: "pgbouncer"
+  GC2_DATABASE: "mapcentia"
+  GC2_USER: "gc2"
+  GC2_PORT: "5433"
+  GC2_PASSWORD: "12345"
+  GC2_BOUNCER: "true"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: gc2core-env
+  name: gc2core-env
