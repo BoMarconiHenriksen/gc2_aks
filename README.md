@@ -40,15 +40,6 @@ This will create the "settings" schema in the database. This should only be run 
 /api/v2/admin/runmigrations/[your_database]
 
 This will run the latest migrations in the database. This will only affect the settings schema in the database.
-When building your custom GC2 Docker image, please use the "develop" tagged base image: https://cloud.docker.com/repository/registry-1.docker.io/mapcentia/gc2core
-
-Something like this:
-
-```
-FROM mapcentia/gc2core:develop
-ADD App.php /var/www/geocloud2/app/conf/App.php
-ADD Connection.php /var/www/geocloud2/app/conf/Connection.php # Set the db connection
-```
 
 ---
 ### Installation
@@ -61,13 +52,11 @@ Steps to deploy the GC2 on AKS cluster:
 
 - `email` field in `cluster-issuer.yaml`
 
-- `GC2_HOST` field in `vidi-env-configmap.yaml`
+- all field in `gc2core-env-configmap.yaml` and `vidi-env-configmap.yaml`
 
 - `hosts` and `host` fields filled with GC2 installation host name (linked with Azure Public IP) in `00-ingress-rules-gc2.yaml`
 
 - `hosts` and `host` fields filled with Vidi installation host name (linked with Azure Public IP) in `00-ingress-rules-vidi.yaml`
-
-- `image` field with the custom `pgbouncer` image name in `pgbouncer-pod.yaml`
 
 4. Run `kubectl apply -f .` command to instantiate GC2 pods and services.
 
@@ -76,11 +65,9 @@ Steps to deploy the GC2 on AKS cluster:
 ### Overview of entities
 ##### Pods (the smallest deployable units of computing that can be created and managed in Kubernetes)
 
-`gc2core` - provides the GC2 API, dashboard and other GC2 services (`mapcentia/gc2core:develop` image)
+`gc2core` - provides the GC2 API, dashboard and other GC2 services (`alexshumilov/gc2core:develop` image)
 
 `mapcache` - provides the caching for WMS layers  (`mapcentia/mapcache` image)
-
-`pgbouncer` - manages the PostgreSQL cluster connection pooling (installation-specific image)
 
 `vidi` - provides the Vidi application (`mapcentia/vidi` image)
 
@@ -93,8 +80,6 @@ Steps to deploy the GC2 on AKS cluster:
 `gc2core` - 80/TCP port is open, provides access to GC2 API, dashboard and other GC2 services (internal service)
 
 `mapcache` - 5555/TCP port is open, provides map caching (internal service)
-
-`pgbouncer` - 5433/TCP port is open, managing connection to the PostgreSQL cluster (internal service)
 
 `nginx-ingress-controller` - 80/TCP and 443/TCP ports are open (external service)
 
