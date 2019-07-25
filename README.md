@@ -47,16 +47,14 @@ This will run the latest migrations in the database. This will only affect the s
 Steps to deploy the GC2 on AKS cluster:
 
 1. Ensure that `kubectl` command is authorized on AKS cluster;
-2. Enter Azure storage account name and storage account key in `storage-credentials.yaml` (please see the https://zimmergren.net/mount-an-azure-storage-file-share-to-deployments-in-azure-kubernetes-services-aks/ for instructions);
+2. Enter Azure storage account name and storage account key in `conf-storage-credentials.yaml` (please see the https://zimmergren.net/mount-an-azure-storage-file-share-to-deployments-in-azure-kubernetes-services-aks/ for instructions);
 3. Install the ingress controller and SSL certificates manager (please follow the https://docs.microsoft.com/en-us/azure/aks/ingress-tls). The installation uses two ingress controllers in order to provide separate balancing and routing for GC2 and Vidi services. All files, required during installation, are already present in the provided configurations, but hey need to be filled with installation-specific data:
 
-- `email` field in `cluster-issuer.yaml`
+- `email` field in `ingress-ssl/cluster-issuer.yaml`
 
-- all field in `gc2core-env-configmap.yaml` and `vidi-env-configmap.yaml`
+- all field in `conf-gc2core-env-configmap.yaml` and `conf-vidi-env-configmap.yaml`
 
-- `hosts` and `host` fields filled with GC2 installation host name (linked with Azure Public IP) in `00-ingress-rules-gc2.yaml`
-
-- `hosts` and `host` fields filled with Vidi installation host name (linked with Azure Public IP) in `00-ingress-rules-vidi.yaml`
+- `hosts` and `host` fields filled with GC2 and Vidi installation host names (linked with Azure Public IP) in `conf-ingress-rules.yaml`
 
 4. Run `kubectl apply -f .` command to instantiate GC2 pods and services.
 
