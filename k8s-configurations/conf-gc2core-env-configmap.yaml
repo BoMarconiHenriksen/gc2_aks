@@ -6,6 +6,7 @@ data:
   GC2_PORT: "5433"
   GC2_PASSWORD: "12345"
   GC2_BOUNCER: "true"
+  VIDI_URL: "https://vidi.eastus.cloudapp.azure.com/app/"
 kind: ConfigMap
 metadata:
   creationTimestamp: null
