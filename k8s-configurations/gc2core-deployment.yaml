@@ -19,7 +19,7 @@ spec:
         io.kompose.service: gc2core
     spec:
       containers:
-      - image: alexshumilov/gc2core
+      - image: alexshumilov/gc2core:latest
         name: gc2core
         resources: {}
         securityContext:
@@ -63,6 +63,11 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: GC2_BOUNCER
+              name: gc2core-env
+        - name: VIDI_URL
+          valueFrom:
+            configMapKeyRef:
+              key: VIDI_URL
               name: gc2core-env
       restartPolicy: Always
       volumes:

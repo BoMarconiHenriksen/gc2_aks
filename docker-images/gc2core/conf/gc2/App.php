@@ -191,7 +191,7 @@ class App
             ],
         ],
 
-        "vidiUrl" => "http://127.0.0.1:3000",
+        "vidiUrl" => "VIDI_URL_CONFIGURATION",
 
     );
     function __construct(){

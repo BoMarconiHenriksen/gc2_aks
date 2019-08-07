@@ -98,34 +98,23 @@ WARNING: No PostgreSQL pgbouncer has been set for the GC2 user.
          You set this in geocloud2/app/conf/Connection.php
 *************************************************************"
     fi
-fi
 
-# Rebuilding the dashboard to provide configuration from ConfigMap
-mkdir -p /dashboardtmp &&\
-cd /dashboardtmp &&\
-git clone http://github.com/mapcentia/dashboard.git &&\
-cd /dashboardtmp/dashboard &&\
-npm install &&\
-cp ./app/config.js.sample ./app/config.js
-
-# Dashboard "vidiUrl" setting
-if [ -n "$GC2_HOST" ]; then
-    sed -i "s/VIDI_URL_CONFIGURATION/$VIDI_URL/g" /dashboardtmp/dashboard/app/config.js
-    echo "
+    # Dashboard "vidiUrl" setting
+    if [ -n "$VIDI_URL" ]; then
+      sed -i "s#VIDI_URL_CONFIGURATION#$VIDI_URL#g" /var/www/geocloud2/app/conf/App.php
+      echo "
 *************************************************************
-Info:    Vidi URL was set
+Info:    Vidi URL was set in
+         geocloud2/app/conf/App.php
 *************************************************************"
-else
-    echo "
+    else
+      echo "
 *************************************************************
 WARNING: No Vidi URL has been set
+         You set this in geocloud2/app/conf/App.php
 *************************************************************"
+    fi
 fi
-
-cd /dashboardtmp/dashboard &&\
-cp ./.env.production ./.env &&\
-npm run build && cp -R ./build/* /var/www/geocloud2/public/dashboard/ &&\
-rm -R /dashboardtmp
 
 chown www-data:www-data /var/www/geocloud2/app/tmp/ &&\
 chown www-data:www-data /var/www/geocloud2/app/wms/mapfiles/ &&\

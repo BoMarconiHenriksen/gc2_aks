@@ -6,7 +6,7 @@ data:
   GC2_PORT: "5433"
   GC2_PASSWORD: "12345"
   GC2_BOUNCER: "true"
-  VIDI_URL: "https://vidi.eastus.cloudapp.azure.com/app/"
+  VIDI_URL: "https://somehost.eastus.cloudapp.azure.com" # No slash at the end of the host name
 kind: ConfigMap
 metadata:
   creationTimestamp: null
