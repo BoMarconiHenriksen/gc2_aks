@@ -69,6 +69,11 @@ spec:
             configMapKeyRef:
               key: VIDI_URL
               name: gc2core-env
+        - name: GOOGLE_API_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: GOOGLE_API_KEY
+              name: gc2core-env
       restartPolicy: Always
       volumes:
       - name: gc2core-var-www-geocloud2-app-wms-mapcache
