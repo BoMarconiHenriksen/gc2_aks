@@ -18,6 +18,21 @@ WARNING: No GC2 host has been set for Vidi.
 ****************************************************"
     fi
 
+    if [ -n "$GOOGLE_MAPS_API_KEY" ]; then
+      sed -i "s~GOOGLE_MAPS_API_KEY~$GOOGLE_MAPS_API_KEY~g" /root/vidi/config/config.js
+      echo "
+****************************************************
+INFO:    Google Maps API key set to ${GOOGLE_MAPS_API_KEY}
+****************************************************"
+        else
+            echo "
+****************************************************
+WARNING: No Google Maps API key has been set for Vidi.
+         You can set the Google Maps API key in
+         vidi/config/config.js
+****************************************************"
+    fi
+
     if [ -n "$LOCALE" ]; then
             locale=$LOCALE
             echo "
