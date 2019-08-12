@@ -114,6 +114,22 @@ WARNING: No Vidi URL has been set
          You set this in geocloud2/app/conf/App.php
 *************************************************************"
     fi
+
+    # Dashboard "vidiUrl" setting
+    if [ -n "$GOOGLE_API_KEY" ]; then
+      sed -i "s#GOOGLE_API_KEY#$GOOGLE_API_KEY#g" /var/www/geocloud2/app/conf/App.php
+      echo "
+*************************************************************
+Info:    Google API key was set in
+         geocloud2/app/conf/App.php
+*************************************************************"
+    else
+      echo "
+*************************************************************
+WARNING: Google API key has been set
+         You set this in geocloud2/app/conf/App.php
+*************************************************************"
+    fi
 fi
 
 chown www-data:www-data /var/www/geocloud2/app/tmp/ &&\

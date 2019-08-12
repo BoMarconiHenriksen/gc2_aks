@@ -61,6 +61,9 @@ class App
         // Bing key
         "bingApiKey" => 'your_bing_map_key',
 
+        // Google key
+        "googleApiKey" => "GOOGLE_API_KEY",
+
         //Force a locale. If not set it'll set set from the browsers language settings.
         //"locale" => "en_US",
 
