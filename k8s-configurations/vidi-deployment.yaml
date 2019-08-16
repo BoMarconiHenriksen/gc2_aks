@@ -25,11 +25,6 @@ spec:
             configMapKeyRef:
               key: GC2_HOST
               name: vidi-env
-        - name: GOOGLE_MAPS_API_KEY
-          valueFrom:
-            configMapKeyRef:
-              key: GOOGLE_MAPS_API_KEY
-              name: vidi-env
         image: alexshumilov/vidi
         name: vidi
         resources: {}

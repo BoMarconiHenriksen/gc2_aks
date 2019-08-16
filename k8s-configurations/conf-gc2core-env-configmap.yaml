@@ -7,7 +7,7 @@ data:
   GC2_PASSWORD: "12345"
   GC2_BOUNCER: "true"
   VIDI_URL: "https://somehost.eastus.cloudapp.azure.com" # No slash at the end of the host name
-  GOOGLE_API_KEY: "abc123"
+  GOOGLE_API_KEY: "AIzaSyDz-McqNe8NNwebYjyHu_G5X59YysH--mg" # The key is restricted for the gc2.eastus.cloudapp.azure.com domain
 kind: ConfigMap
 metadata:
   creationTimestamp: null
