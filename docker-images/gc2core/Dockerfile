@@ -1,4 +1,4 @@
-FROM mapcentia/gc2core:develop
+FROM mapcentia/gc2core
 MAINTAINER Martin Høgh<mh@mapcentia.com>
 
 RUN export DEBIAN_FRONTEND=noninteractive
